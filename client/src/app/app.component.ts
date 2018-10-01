@@ -27,7 +27,7 @@ export class AppComponent extends EditComponent<ParentDto> {
   }
 
   protected updateForm(data: ParentDto) {
-    this.form.patchValue({ children: undefined });
+    this.form.patchValue({ files: undefined });
     this.form.patchValue({ name: data.name });
   }
 
@@ -36,11 +36,11 @@ export class AppComponent extends EditComponent<ParentDto> {
   }
 
   public filesDropped(files: File[]) {
-    let childrenForm = this.form.get('children');
+    let filesForm = this.form.get('files');
     if (files == undefined) {
-      childrenForm.reset();
+      filesForm.reset();
     } else {
-      childrenForm.patchValue(files);
+      filesForm.patchValue(files);
     }
     this.cd.detectChanges();
   }

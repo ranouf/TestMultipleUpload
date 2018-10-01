@@ -21,7 +21,7 @@ namespace TestMultipleUpload.Api.Controllers
         // POST api/values
         [HttpPost]
         [ProducesResponseType(typeof(ParentDto), (int)HttpStatusCode.OK)]
-        public IActionResult Post([FromBody]ParentDto dto)
+        public IActionResult Post(ParentDto dto)
         {
             Console.Write("Parent Name:" + dto.Name);
             if (dto.Files != null)
