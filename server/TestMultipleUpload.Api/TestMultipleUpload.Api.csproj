@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="AspNetCoreRuntime.2.2.x64" Version="2.2.0-preview3-35364" />
   </ItemGroup>
 
 </Project>
