@@ -1,0 +1,30 @@
+<form [formGroup]="childrenForm" *ngIf="childrenForm">
+
+  <div formArrayName="children">
+
+    <div *ngFor="let child of children; let idx=index ">
+
+      Item #{{idx}}
+
+      <app-child [children]="childrenForm.controls.children"
+                 [child]="child">
+      </app-child>
+
+      <button type="button"
+              mat-raised-button
+              color="warn"
+              (click)="removeChild(idx)">
+        Remove
+      </button>
+
+    </div>
+
+  </div>
+</form>
+
+<a mat-fab color="accent"
+   class="mat-fab-bottom-right fixed"
+   style="z-index:5000"
+   (click)="addItem()">
+  ADD
+</a>

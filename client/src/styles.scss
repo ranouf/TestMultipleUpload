@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+
+/* Define a custom typography config that overrides the font-family*/
+/* or any typography level.*/
+/*$typography: mat-typography-config(
+  $font-family: 'Roboto, monospace',
+  $headline: mat-typography-level(32px, 48px, 700)
+);*/
+
+@include mat-core( /*$typography*/ ); /* $typography is an **optional** argument for the mat-core*/
+
+$primary: mat-palette($mat-blue, 900, 100, 900);
+$accent: mat-palette($mat-light-blue, 600, 100, 900);
+
+$warn: mat-palette($mat-red, 600, 100, 900);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);

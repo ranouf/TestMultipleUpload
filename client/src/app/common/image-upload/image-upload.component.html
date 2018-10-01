@@ -1,0 +1,53 @@
+<div layout="row" flex *ngIf="image" class="push-top">
+  <div *ngIf="originalImage;then editImages else newImages"></div>
+  <ng-template #editImages>
+    <div [matBadge]="imageCount" matBadgeOverlap="true">
+      <div class="image">
+        <img [src]="image" height="200" />
+        <button mat-fab class="deleteImage"
+                type="button"
+                (click)="delete()">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #newImages>
+    <span [matBadge]="imageCount" matBadgeOverlap="true">
+      <img [src]="image" height="200" />
+    </span>
+  </ng-template>
+</div>
+
+<div layout="row" flex class="push-top">
+  <input style="display: none"
+         type="file"
+         (change)="onFileChanged($event)"
+         [multiple]="allowMultiple"
+         [accept]="accept"
+         #fileInput>
+  <button (click)="fileInput.click()"
+          (keyup.enter)="fileInput.click()"
+          mat-raised-button
+          color="primary"
+          type="button">
+    <mat-icon>insert_photo</mat-icon>
+    <div *ngIf="allowMultiple;then multipleImages else singleImage"></div>
+    <ng-template #multipleImages>
+      ADD IMAGES
+    </ng-template>
+    <ng-template #singleImage>
+      ADD IMAGE
+    </ng-template>
+  </button>
+  <button mat-raised-button
+          color="accent"
+          class="push-left"
+          type="button"
+          *ngIf="selectedFiles"
+          (click)="clearFiles()"
+          (keyup.enter)="clearFiles()">
+    <mat-icon>cancel</mat-icon>
+    CANCEL
+  </button>
+</div>

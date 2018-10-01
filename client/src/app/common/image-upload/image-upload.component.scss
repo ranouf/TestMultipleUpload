@@ -1,0 +1,23 @@
+.image {
+  position: relative;
+
+  .deleteImage
+  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -24px;
+    margin-top: -24px;
+    visibility: hidden;
+  }
+}
+
+.image:hover {
+  img  {
+    opacity: 0.5;
+  }
+
+  .deleteImage {
+    visibility: visible;
+  }
+}

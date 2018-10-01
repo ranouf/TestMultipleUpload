@@ -1,0 +1,39 @@
+
+<form [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()">
+  <mat-form-field flex>
+    <input #name
+           name="name"
+           matInput
+           type="text"
+           placeholder="Parent name"
+           formControlName="name"
+           maxlength="50"
+           required />
+    <mat-error *ngIf="name.pristine || !name.errors">
+      <div *ngIf="name.errors?.required">
+        this field is required.
+      </div>
+      <div *ngIf="name.errors?.maxlength">
+        max length is 50.
+      </div>
+    </mat-error>
+    <mat-hint align="end">{{name.value.length}} / 50</mat-hint>
+  </mat-form-field>
+
+  <app-image-upload [allowMultiple]="true"
+                    [maximumSize]="20000000"
+                    [required]="false"
+                    (onFilesDropped)="filesDropped($event)"
+                    [accept]="'image/*'"></app-image-upload>
+
+  <app-children [childrenForm]="form"
+                [children]="(dataAsync | async)?.children">
+  </app-children>
+
+  <button type="submit"
+          [disabled]="!isValid"
+          mat-raised-button
+          color="warn">
+    SAVE
+  </button>
+</form>
