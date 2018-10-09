@@ -60,7 +60,11 @@ export class FamilyServiceExtensions extends FamilyService {
       formData.append(root, data);
     } else if (Array.isArray(data)) {
       for (var i = 0; i < data.length; i++) {
-        this.appendFormData(formData, data[i], root + '[' + i + ']');
+        if (data[i] instanceof File) {
+          this.appendFormData(formData, data[i], root);
+        } else {
+          this.appendFormData(formData, data[i], root + '[' + i + ']');
+        }
       }
     } else if (typeof data === 'object' && data) {
       for (var key in data) {
